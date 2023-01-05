@@ -1,3 +1,5 @@
+import { type } from "os"
+
 export interface IPost {
   _id: string
   title: string
@@ -25,6 +27,24 @@ export interface IComment {
   _updatedAt: string
 }
 
+export interface ISpill extends ISpillBody {
+  _id: string
+  _createdAt: string
+  _updatedAt: string
+  _rev: string
+  _type: 'spill'
+  slug: { _type: string, current: string }
+  verified: boolean
+  blockSpill: boolean
+  // comments: IComment[]
+}
+
+export type ISpillBody = {
+  spill: string
+  author: string
+  company: { name: string }
+}
+
 export interface ICompany {
   _id: string
   image: { asset: { url: string } } | null
@@ -40,4 +60,8 @@ interface IPosts {
 
 interface ICompanies {
   companies: ICompany[]
+}
+
+interface ISpills {
+  spills: ISpill[]
 }

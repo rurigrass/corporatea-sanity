@@ -5,7 +5,8 @@ import Image from "next/image";
 import cup from "../../images/cup.png";
 
 const TeaBox = ({ companies }: ICompanies) => {
-    const [dropdownOpen, setDropdownOpen] = useState(true)
+    const [input, setInput] = useState<string>("")
+    const [dropdownOpen, setDropdownOpen] = useState(false)
     const [selectedCompany, setCompany] = useState<ICompany>({
         _id: "0",
         image: null,
@@ -13,8 +14,9 @@ const TeaBox = ({ companies }: ICompanies) => {
         slug: { _type: "string", current: "string" }
     })
 
+
     return (
-        <div className="bg-white rounded-xl m-2 md:m-6 p-2 grid grid-cols-teabox gap-2">
+        <div className="bg-white rounded-xl m-2 md:mx-6 p-2 grid grid-cols-teabox gap-4">
             <div className="grid grid-rows-2 gap-2 w-14">
                 <Image className="h-14 w-14 rounded-full" src={cup} alt="cup" priority={true} />
                 {selectedCompany.image === null || null ?
@@ -25,7 +27,7 @@ const TeaBox = ({ companies }: ICompanies) => {
             </div>
             <form className="grid grid-rows-teabox gap-2" action="" >
                 {/* <div> */}
-                <textarea className="p-2 border-none resize-none" placeholder="What's the tea?" />
+                <textarea className="p-2 border-none resize-none" placeholder="What's the tea?" value={input} onChange={e => setInput(e.target.value)} />
                 {/* </div> */}
                 <div className="flex justify-end space-x-2">
                     <div className="relative">
@@ -61,7 +63,7 @@ const TeaBox = ({ companies }: ICompanies) => {
                             <img className="h-14 w-14 mt-4 rounded-full object-cover cursor-pointer" src="https://links.papareact.com/gll" alt="Jese image" />
                             Bonnie Green
                         </a> */}
-                    <button className="bg-green-green text-white px-3 py-2 rounded-xl">spill</button>
+                    <button className="bg-green-green text-white px-3 py-2 rounded-xl disabled:opacity-75" disabled={!input}>spill</button>
                 </div>
             </form>
         </div>

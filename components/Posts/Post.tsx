@@ -6,6 +6,8 @@ import { IPost } from "../../typings"
 
 
 const Post = ({ post }: { post: IPost }) => {
+    console.log(post);
+
 
     return (
         <div className="bg-gray-light border rounded-lg">
@@ -23,8 +25,8 @@ const Post = ({ post }: { post: IPost }) => {
                 </Link>
             </div>
             <div className="flex justify-between p-2">
-                <div className="bg-white p-2 rounded-lg">
-                    <p className="underline decoration-white decoration-3 hover: cursor-pointer hover:text-green-green hover:decoration-green">
+                <div className="bg-white p-2 rounded-lg hover:cursor-pointer hover:text-green-green hover:decoration-green-green">
+                    <p className="underline decoration-white decoration-3">
                         #{post.company.name}
                     </p>
                 </div>

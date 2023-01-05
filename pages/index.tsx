@@ -4,12 +4,14 @@ import Link from 'next/link'
 import Header from '../components/Header'
 import Banner from '../components/Banner'
 import TeaBox from '../components/TeaFeed/TeaBox'
+import TeaFeed from '../components/TeaFeed/TeaFeed'
 
-import { ICompanies, ICompany, IPost, IPosts } from "../typings";
+import { ICompanies, ICompany, IPost, IPosts, ISpills } from "../typings";
 import Post from '../components/Posts/Post'
+import { fetchSpills } from '../utils/fetchSpills'
 
-export default function Home(props: (IPosts & ICompanies)) {
-  const { posts, companies } = props
+export default function Home(props: (IPosts & ICompanies & ISpills)) {
+  const { posts, companies, spills } = props
 
   return (
     <div className="max-w-7xl mx-auto bg-gray-light">
@@ -19,6 +21,7 @@ export default function Home(props: (IPosts & ICompanies)) {
       <Header />
       <Banner />
       <TeaBox companies={companies} />
+      <TeaFeed spills={spills} />
       <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 md:gap-6 p-2 md:p-6 bg-blue-shady'>
         {posts.map(post => {
           return (
@@ -55,10 +58,13 @@ export const getServerSideProps = async () => {
 
   const companies = await sanityClient.fetch(CompaniesQuery);
 
+  const spills = await fetchSpills()
+
   return {
     props: {
       posts,
-      companies
+      companies,
+      spills
     }
   }
 };

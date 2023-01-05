@@ -1,13 +1,13 @@
 export default {
-  name: "comment",
-  title: "Comment",
+  name: "spillComment",
+  title: "SpillComment",
   type: "document",
   fields: [
     {
       title: "Approved",
       name: "approved",
       type: "boolean",
-      description: "Comments won't show on the site without approval",
+      description: "Comments won't show on the site without user approval",
     },
     {
       name: "blockComment",
@@ -20,16 +20,16 @@ export default {
       type: "text",
     },
     {
-      name: "post",
+      name: "spill",
       type: "reference",
-      to: [{ type: "post" }],
+      to: [{ type: "spill" }],
     },
   ],
 
   preview: {
     select: {
       title: "comment",
-      post: "post.title",
+      spill: "spill.title",
     },
     prepare(selection) {
       const { post } = selection;
