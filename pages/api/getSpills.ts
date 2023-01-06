@@ -9,7 +9,8 @@ const spillQuery = groq`
   _id,
   spill,
   company -> {
-    name
+    name,
+    image
   },
   _createdAt
 }  | order(_createdAt desc)

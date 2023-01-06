@@ -14,7 +14,7 @@ export default function Home(props: (IPosts & ICompanies & ISpills)) {
   const { posts, companies, spills } = props
 
   return (
-    <div className="max-w-7xl mx-auto bg-gray-light">
+    <div className="max-w-7xl mx-auto bg-blue-tintiest">
       <Head>
         <title>Bulby Leaks</title>
       </Head>

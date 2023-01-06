@@ -6,8 +6,6 @@ import { IPost } from "../../typings"
 
 
 const Post = ({ post }: { post: IPost }) => {
-    console.log(post);
-
 
     return (
         <div className="bg-gray-light border rounded-lg">

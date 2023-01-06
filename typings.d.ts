@@ -42,7 +42,26 @@ export interface ISpill extends ISpillBody {
 export type ISpillBody = {
   spill: string
   author: string
-  company: { name: string }
+  company: { name: string, image: { asset: { url: string } } | null }
+}
+
+export interface ISpillComment extends ISpillCommentBody {
+  _id: string,
+  spill: {
+    _ref: string,
+    _type: string
+  },
+  blockComment: boolean,
+  _createdAt: string,
+  _rev: string,
+  _type: string,
+  _updatedAt: string,
+  approved: boolean
+}
+
+type ISpillCommentBody = {
+  comment: string,
+  _createdAt: string
 }
 
 export interface ICompany {

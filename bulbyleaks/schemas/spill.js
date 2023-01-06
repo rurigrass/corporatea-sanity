@@ -54,6 +54,7 @@ export default {
   ],
   initialValue: {
     blockSpill: false,
+    verified: false,
   },
 
   preview: {

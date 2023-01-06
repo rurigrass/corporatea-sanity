@@ -4,10 +4,13 @@ export default {
   type: "document",
   fields: [
     {
-      title: "Approved",
-      name: "approved",
-      type: "boolean",
-      description: "Comments won't show on the site without user approval",
+      name: "spill",
+      type: "reference",
+      to: [{ type: "spill" }],
+    },
+    {
+      name: "comment",
+      type: "text",
     },
     {
       name: "blockComment",
@@ -15,16 +18,10 @@ export default {
       description: "ADMIN Controls: Toggle if Comment is deemed inapropriate",
       type: "boolean",
     },
-    {
-      name: "comment",
-      type: "text",
-    },
-    {
-      name: "spill",
-      type: "reference",
-      to: [{ type: "spill" }],
-    },
   ],
+  initialValue: {
+    blockComment: false,
+  },
 
   preview: {
     select: {
