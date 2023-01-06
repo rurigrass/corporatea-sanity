@@ -27,7 +27,7 @@ const TeaBox = ({ companies }: ICompanies) => {
             </div>
             <form className="grid grid-rows-teabox gap-2" action="" >
                 {/* <div> */}
-                <textarea className="p-2 border-none resize-none" placeholder="What's the tea?" value={input} onChange={e => setInput(e.target.value)} />
+                <textarea className="p-2 border-none resize-none text-xl md:text-2xl text-gray-gray font-semibold" placeholder="What's the tea?" value={input} onChange={e => setInput(e.target.value)} />
                 {/* </div> */}
                 <div className="flex justify-end space-x-2">
                     <div className="relative">
