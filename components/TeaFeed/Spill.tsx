@@ -53,10 +53,15 @@ const Spill = ({ spill }: { spill: ISpill }) => {
             </div>
             <div className="bg-gray-light rounded-b-xl">
                 {spillComments.map(spillComment =>
-                    <div className="flex items-center px-3 py-2 even:bg-white">
-                        <div className="bg-gray-grayer h-10 w-10 rounded-full "></div>
-                        <div className="px-2">
-                            {spillComment.comment}
+                    <div className="even:bg-white relative">
+                        <div className="text-gray-gray text-[10px] absolute right-4 top-1">
+                            <TimeAgo date={spillComment._createdAt} />
+                        </div>
+                        <div className="flex items-center px-3 py-2 ">
+                            <div className="bg-gray-grayer h-10 w-10 rounded-full "></div>
+                            <div className="px-2 text-gray-gray">
+                                {spillComment.comment}
+                            </div>
                         </div>
                     </div>)}
             </div>

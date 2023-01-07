@@ -32,6 +32,10 @@ module.exports = {
         light: "#F2F2F2",
       },
     },
+    // fontSize: {
+    //   xxs: ["0.6rem", "0.8rem"],
+    //   xs: ["0.75rem", "1rem"],
+    // },
     extend: {
       gridTemplateColumns: {
         teabox: "min-content auto",
