@@ -3,6 +3,7 @@ import { urlFor } from "../../sanity";
 import { ICompanies, ICompany } from "../../typings";
 import Image from "next/image";
 import cup from "../../images/cup.png";
+import { truncate } from "../../utils/reusables";
 
 const TeaBox = ({ companies }: ICompanies) => {
     const [input, setInput] = useState<string>("")
@@ -50,9 +51,7 @@ const TeaBox = ({ companies }: ICompanies) => {
                                                         src={urlFor(company.image).url()!}
                                                         alt="" />
                                                 ) : <div className="h-10 w-10 rounded-full bg-pink-tintier mr-2" />}
-                                                {company.name.length > 15 ?
-                                                    (company.name).substring(0, 15) + "..." :
-                                                    company.name}</button>
+                                                {truncate(company.name, 15)}</button>
                                         </li>
                                     )}
                                 </ul>
