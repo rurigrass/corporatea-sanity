@@ -7,7 +7,7 @@ import { truncate } from "../../utils/reusables";
 
 const TeaBox = ({ companies }: ICompanies) => {
     const [input, setInput] = useState<string>("")
-    const [dropdownOpen, setDropdownOpen] = useState(false)
+    const [dropdownOpen, setDropdownOpen] = useState(true)
     const [selectedCompany, setCompany] = useState<ICompany>({
         _id: "0",
         image: null,
@@ -39,6 +39,7 @@ const TeaBox = ({ companies }: ICompanies) => {
                             <>
                                 <button onClick={(e) => { e.preventDefault(), setDropdownOpen(false) }} className="fixed w-full h-full bg-blue-shady opacity-50 inset-0 z-20 cursor-default"></button>
                                 <ul className="absolute mt-1 right-0 z-20 bg-white rounded-xl overflow-auto h-48">
+                                    <input type="text" placeholder="Search Company" className="px-3 py-2 outline-none" onChange={(e) => { console.log(e.target.value) }} />
                                     <a href="#" className="flex static px-3 py-2 border-b-blue-normal border-b-2">Add new company</a>
                                     {companies.map(company =>
                                         <li key={company._id} className="first:rounded-t-xl last:rounded-b-xl bg-gray-light text-blue-shady hover:bg-blue-tintish hover:text-white">

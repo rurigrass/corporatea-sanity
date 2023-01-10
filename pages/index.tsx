@@ -20,8 +20,10 @@ export default function Home(props: (IPosts & ICompanies & ISpills)) {
       </Head>
       <Header />
       <Banner />
-      <TeaBox companies={companies} />
-      <TeaFeed spills={spills} />
+      <div className='max-w-2xl mx-auto'>
+        <TeaBox companies={companies} />
+        <TeaFeed spills={spills} />
+      </div>
       <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 md:gap-6 p-2 md:p-6 bg-blue-shady'>
         {posts.map(post => {
           return (

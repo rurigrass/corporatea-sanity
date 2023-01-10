@@ -19,9 +19,6 @@ const Spill = ({ spill }: { spill: ISpill }) => {
         refreshSpillComments()
     }, [])
 
-    console.log(spillComments);
-
-
     return (
         <div className="m-2 md:mx-6">
             <div className={`bg-white ${spillComments.length > 0 ? "rounded-t-xl" : "rounded-xl"}`}>
@@ -54,7 +51,7 @@ const Spill = ({ spill }: { spill: ISpill }) => {
             </div>
             <div className="bg-gray-light rounded-b-xl">
                 {spillComments.map(spillComment =>
-                    <div className="even:bg-white grid grid-cols-teabox p-2 pl-3.5">
+                    <div key={spillComment._id} className="even:bg-white grid grid-cols-teabox p-2 pl-3.5">
                         <div className="bg-gray-grayer h-10 w-10 rounded-full" />
                         <div className="relative">
                             <TimeAgo className="text-gray-gray text-[9px] absolute right-2 -top-1" date={spillComment._createdAt} />
