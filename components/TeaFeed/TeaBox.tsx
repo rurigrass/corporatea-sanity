@@ -16,10 +16,6 @@ const TeaBox = ({ companies }: ICompanies) => {
         slug: { _type: "string", current: "string" }
     })
 
-    console.log(searchInput);
-
-
-
     return (
         <div className="bg-white rounded-xl m-2 md:mx-6 p-2 grid grid-cols-teabox gap-4">
             <div className="grid grid-rows-2 gap-2 w-14">

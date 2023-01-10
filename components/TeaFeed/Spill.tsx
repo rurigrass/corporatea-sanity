@@ -39,7 +39,7 @@ const Spill = ({ spill }: { spill: ISpill }) => {
                     </div>
                     <div className="flex space-x-2">
                         <div className="flex bg-blue-light p-2 space-x-1.5 rounded-lg cursor-pointer">
-                            <div>10</div>
+                            <div>{spillComments.length}</div>
                             <div>💬</div>
                         </div>
                         <div className="flex bg-blue-light p-2 space-x-1.5 rounded-lg cursor-pointer">
