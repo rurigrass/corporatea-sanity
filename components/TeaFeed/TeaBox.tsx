@@ -7,13 +7,17 @@ import { truncate } from "../../utils/reusables";
 
 const TeaBox = ({ companies }: ICompanies) => {
     const [input, setInput] = useState<string>("")
-    const [dropdownOpen, setDropdownOpen] = useState(true)
+    const [dropdownOpen, setDropdownOpen] = useState(false)
+    const [searchInput, setSearchInput] = useState<string>("")
     const [selectedCompany, setCompany] = useState<ICompany>({
         _id: "0",
         image: null,
         name: "no name",
         slug: { _type: "string", current: "string" }
     })
+
+    console.log(searchInput);
+
 
 
     return (
@@ -28,7 +32,7 @@ const TeaBox = ({ companies }: ICompanies) => {
             </div>
             <form className="grid grid-rows-teabox gap-2" action="" >
                 {/* <div> */}
-                <textarea className="p-2 border-none resize-none text-xl md:text-2xl text-gray-gray font-semibold" placeholder="What's the tea?" value={input} onChange={e => setInput(e.target.value)} />
+                <textarea className="p-2 border-none resize-none text-xl md:text-2xl text-gray-gray font-semibold outline-none" placeholder="What's the tea?" value={input} onChange={e => setInput(e.target.value)} />
                 {/* </div> */}
                 <div className="flex justify-end space-x-2">
                     <div className="relative">
@@ -38,14 +42,15 @@ const TeaBox = ({ companies }: ICompanies) => {
                         {dropdownOpen &&
                             <>
                                 <button onClick={(e) => { e.preventDefault(), setDropdownOpen(false) }} className="fixed w-full h-full bg-blue-shady opacity-50 inset-0 z-20 cursor-default"></button>
-                                <ul className="absolute mt-1 right-0 z-20 bg-white rounded-xl overflow-auto h-48">
-                                    <input type="text" placeholder="Search Company" className="px-3 py-2 outline-none" onChange={(e) => { console.log(e.target.value) }} />
-                                    <a href="#" className="flex static px-3 py-2 border-b-blue-normal border-b-2">Add new company</a>
+                                <ul className="absolute mt-1 right-0 z-20 bg-white rounded-xl overflow-auto max-h-52 w-60">
+                                    <div className="flex items-center top-0 sticky">
+                                        <input type="text" placeholder="Search company" className="px-3 py-2 outline-none w-full text-gray-gray border-b-2 border-b-blue-normal" value={searchInput} onChange={(e) => { setSearchInput(e.target.value.toLowerCase()) }} />
+                                    </div>
                                     {companies.map(company =>
-                                        <li key={company._id} className="first:rounded-t-xl last:rounded-b-xl bg-gray-light text-blue-shady hover:bg-blue-tintish hover:text-white">
+                                        <li key={company._id} className={`first:rounded-t-xl last:rounded-b-xl bg-gray-light text-blue-shady hover:bg-blue-tintish hover:text-white ${company.name.toLowerCase().startsWith(searchInput) ? "block" : "hidden"}`}>
                                             <button onClick={(e) => {
                                                 e.preventDefault(), setCompany(company);
-                                            }} className="flex items-center space-x-2 px-3 py-2" title={company.name}>
+                                            }} className="flex items-center space-x-2 px-3 py-2 w-full" title={company.name}>
                                                 {company.image ? (
                                                     <img
                                                         className="h-10 w-10 rounded-full mr-2"
@@ -55,6 +60,7 @@ const TeaBox = ({ companies }: ICompanies) => {
                                                 {truncate(company.name, 15)}</button>
                                         </li>
                                     )}
+                                    <a href="#" className="flex items-center bottom-0 sticky bg-white text-gray-gray px-3 py-2 border-t-2 border-t-blue-normal w-full hover:bg-blue-normal hover:text-white">Add new company</a>
                                 </ul>
                             </>
                         }
