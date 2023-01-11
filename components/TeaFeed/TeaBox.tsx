@@ -56,7 +56,7 @@ const TeaBox = ({ companies }: ICompanies) => {
                                                 {truncate(company.name, 15)}</button>
                                         </li>
                                     )}
-                                    <a href="#" className="flex items-center bottom-0 sticky bg-white text-gray-gray px-3 py-2 border-t-2 border-t-blue-normal w-full hover:bg-blue-normal hover:text-white">Add new company</a>
+                                    <a href="#" className="flex items-center bottom-0 sticky bg-white text-gray-gray px-3 py-2 w-full hover:bg-blue-normal hover:text-white">Add new company</a>
                                 </ul>
                             </>
                         }
