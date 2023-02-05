@@ -5,6 +5,7 @@ import Header from '../components/Header'
 import Banner from '../components/Banner'
 import TeaBox from '../components/TeaFeed/TeaBox'
 import TeaFeed from '../components/TeaFeed/TeaFeed'
+import Footer from '../components/Footer'
 
 import { ICompanies, ICompany, IPost, IPosts, ISpills } from "../typings";
 import Post from '../components/Posts/Post'
@@ -31,7 +32,7 @@ export default function Home(props: (IPosts & ICompanies & ISpills)) {
           )
         })}
       </div>
-      {/* <Footer /> */}
+      <Footer />
     </div >
   )
 }
