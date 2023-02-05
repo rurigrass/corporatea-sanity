@@ -31,6 +31,7 @@ export default function Home(props: (IPosts & ICompanies & ISpills)) {
           )
         })}
       </div>
+      {/* <Footer /> */}
     </div >
   )
 }
