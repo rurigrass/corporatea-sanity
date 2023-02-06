@@ -9,7 +9,7 @@
 
   .content {
     align-self: flex-end;
-    width: 1280px;
+    width: 1280px; 
     height: 300px;
     background-color: #a52a2a;
     animation: animate 10s linear 0.1s infinite;
