@@ -2,6 +2,9 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import sanityClient from '@sanity/client'
 
+
+import { ISpill } from '../../typings'
+
 const config = {
   dataset: process.env.NEXT_PUBLIC_SANITY_DATASET,
   projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID,
@@ -11,24 +14,27 @@ const config = {
 
 const client = sanityClient(config)
 
-export default async function createComment(
+export default async function createSpill(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  const { _id, comment } = JSON.parse(req.body);
+  const { _id, spill } = JSON.parse(req.body);
   try {
     await client.create({
-      _type: 'comment',
-      post: {
+      _type: "spill",
+      spill: spill.spill,
+      author: spill.author,
+      blockSpill: false,
+      company: {
         _type: "reference",
         _ref: _id
       },
-      comment
-    });
+      verified: spill.verified
+    })
   } catch (err) {
     return res.status(500).json({ message: `Couldn't submit content`, err })
   }
 
   console.log("Comment submitted");
-  return res.status(200).json({ comment: "Comment submitted" })
+  return res.status(200).json({ name: 'Spill Submitted' })
 }

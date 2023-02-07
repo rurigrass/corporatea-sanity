@@ -14,7 +14,7 @@ interface IFormInput {
 
 const Post = ({ post }: { post: IPost }) => {
     const [submitted, setSubmitted] = useState(false);
-    console.log(post.comments);
+    console.log(post);
 
     const {
         register,
