@@ -4,6 +4,7 @@ import { ICompanies, ICompany } from "../../typings";
 import Image from "next/image";
 import cup from "../../images/cup.png";
 import { truncate } from "../../utils/reusables";
+import { useForm, SubmitHandler } from 'react-hook-form';
 
 const TeaBox = ({ companies }: ICompanies) => {
     const [input, setInput] = useState<string>("")
