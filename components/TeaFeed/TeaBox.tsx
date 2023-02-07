@@ -6,6 +6,11 @@ import cup from "../../images/cup.png";
 import { truncate } from "../../utils/reusables";
 import { useForm, SubmitHandler } from 'react-hook-form';
 
+interface IFormInput {
+    company: string,
+    spill: string,
+}
+
 const TeaBox = ({ companies }: ICompanies) => {
     const [input, setInput] = useState<string>("")
     const [dropdownOpen, setDropdownOpen] = useState(false)
@@ -16,6 +21,12 @@ const TeaBox = ({ companies }: ICompanies) => {
         name: "no name",
         slug: { _type: "string", current: "string" }
     })
+
+    const {
+        register,
+        handleSubmit,
+        formState: { errors }
+    } = useForm<IFormInput>();
 
     return (
         <div className="bg-white rounded-xl m-2 md:mx-6 p-2 grid grid-cols-teabox gap-4">
@@ -29,7 +40,12 @@ const TeaBox = ({ companies }: ICompanies) => {
             </div>
             <form className="grid grid-rows-teabox gap-2" action="" >
                 {/* <div> */}
-                <textarea className="p-2 border-none resize-none text-xl md:text-2xl text-gray-gray font-semibold outline-none" placeholder="What's the tea?" value={input} onChange={e => setInput(e.target.value)} />
+                <textarea
+                    {...register("spill", { required: true })}
+                    className="p-2 border-none resize-none text-xl md:text-2xl text-gray-gray font-semibold outline-none"
+                    placeholder="What's the tea?"
+                    value={input}
+                    onChange={e => setInput(e.target.value)} />
                 {/* </div> */}
                 <div className="flex justify-end space-x-2">
                     <div className="relative">
