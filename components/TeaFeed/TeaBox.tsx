@@ -61,11 +61,7 @@ const TeaBox = ({ companies }: ICompanies) => {
                             </>
                         }
                     </div>
-                    {/* <a href="#" className="flex items-center py-2 px-4 hover:bg-gray-gray dark:hover:bg-gray-600 dark:hover:text-white">
-                            <img className="h-14 w-14 mt-4 rounded-full object-cover cursor-pointer" src="https://links.papareact.com/gll" alt="Jese image" />
-                            Bonnie Green
-                        </a> */}
-                    <button className="bg-green-green text-white px-3 py-2 rounded-xl disabled:opacity-75" disabled={!input}>spill</button>
+                    <button className="bg-green-green text-white px-3 py-2 rounded-xl disabled:opacity-70" disabled={!input || selectedCompany._id === "0"}>spill</button>
                 </div>
             </form>
         </div>
