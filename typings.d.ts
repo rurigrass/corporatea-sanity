@@ -68,7 +68,7 @@ export interface ICompany {
   _id: string
   image: { asset: { url: string } } | null
   name: string
-  slug: { _type: string, current: string }
+  slug: { _type: string, current: string } | null
 }
 
 //ARRAY TYPINGS 

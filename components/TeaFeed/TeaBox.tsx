@@ -22,6 +22,9 @@ const TeaBox = ({ companies }: ICompanies) => {
         slug: { _type: "string", current: "string" }
     })
 
+    console.log(companies);
+
+
     const {
         register,
         handleSubmit,
