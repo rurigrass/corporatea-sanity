@@ -28,6 +28,11 @@ const TeaBox = ({ companies }: ICompanies) => {
         formState: { errors }
     } = useForm<IFormInput>();
 
+    const onSubmit: SubmitHandler<IFormInput> = async (data) => {
+        console.log(data);
+
+    }
+
     return (
         <div className="bg-white rounded-xl m-2 md:mx-6 p-2 grid grid-cols-teabox gap-4">
             <div className="grid grid-rows-2 gap-2 w-14">
@@ -38,7 +43,7 @@ const TeaBox = ({ companies }: ICompanies) => {
                     <img className="h-14 w-14 rounded-md object-cover" src={urlFor(selectedCompany.image).url()!} />
                 }
             </div>
-            <form className="grid grid-rows-teabox gap-2" action="" >
+            <form className="grid grid-rows-teabox gap-2" action="" onSubmit={handleSubmit(onSubmit)}>
                 {/* <div> */}
                 <textarea
                     {...register("spill", { required: true })}
@@ -61,9 +66,12 @@ const TeaBox = ({ companies }: ICompanies) => {
                                     </div>
                                     {companies.map(company =>
                                         <li key={company._id} className={`first:rounded-t-xl last:rounded-b-xl bg-gray-light text-blue-shady hover:bg-blue-tintish hover:text-white ${company.name.toLowerCase().startsWith(searchInput) ? "block" : "hidden"}`}>
-                                            <button onClick={(e) => {
-                                                e.preventDefault(), setCompany(company);
-                                            }} className="flex items-center space-x-2 px-3 py-2 w-full" title={company.name}>
+                                            <button
+                                                type="button"
+                                                onClick={(e) => {
+                                                    e.preventDefault(), setCompany(company);
+                                                }}
+                                                className="flex items-center space-x-2 px-3 py-2 w-full" title={company.name} {...register("company")}>
                                                 {company.image ? (
                                                     <img
                                                         className="h-10 w-10 rounded-full mr-2"
@@ -78,7 +86,7 @@ const TeaBox = ({ companies }: ICompanies) => {
                             </>
                         }
                     </div>
-                    <button className="bg-green-green text-white px-3 py-2 rounded-xl disabled:opacity-70" disabled={!input || selectedCompany._id === "0"}>spill</button>
+                    <button type="submit" className="bg-green-green text-white px-3 py-2 rounded-xl disabled:opacity-70" disabled={!input || selectedCompany._id === "0"}>spill</button>
                 </div>
             </form>
         </div>
