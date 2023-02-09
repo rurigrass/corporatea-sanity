@@ -4,7 +4,7 @@ import { ICompanies, ICompany } from "../../typings";
 import Image from "next/image";
 import cup from "../../images/cup.png";
 import { truncate } from "../../utils/reusables";
-import { useForm, SubmitHandler } from 'react-hook-form';
+import { useForm, SubmitHandler, useController } from 'react-hook-form';
 
 interface IFormInput {
     company: ICompany,
@@ -22,14 +22,19 @@ const TeaBox = ({ companies }: ICompanies) => {
         slug: { _type: "string", current: "string" }
     })
 
-    console.log("SELECTEDCOMPANY :", selectedCompany);
-
-
     const {
         register,
+        control,
         handleSubmit,
         formState: { errors }
     } = useForm<IFormInput>();
+
+    const { field } = useController({ name: "company", control })
+
+    const handleDropdownChange = (company: ICompany) => {
+        field.onChange(company.name)
+        setCompany(company)
+    }
 
     const onSubmit: SubmitHandler<IFormInput> = async (data) => {
         console.log(data);
@@ -72,7 +77,8 @@ const TeaBox = ({ companies }: ICompanies) => {
                                             <button
                                                 type="button"
                                                 onClick={(e) => {
-                                                    e.preventDefault(), setCompany(company);
+                                                    e.preventDefault(),
+                                                        handleDropdownChange(company)
                                                 }}
                                                 className="flex items-center space-x-2 px-3 py-2 w-full" title={company.name}>
                                                 {company.image ? (
