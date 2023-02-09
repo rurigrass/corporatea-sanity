@@ -7,7 +7,7 @@ import { truncate } from "../../utils/reusables";
 import { useForm, SubmitHandler } from 'react-hook-form';
 
 interface IFormInput {
-    company: string,
+    company: ICompany,
     spill: string,
 }
 
@@ -22,7 +22,7 @@ const TeaBox = ({ companies }: ICompanies) => {
         slug: { _type: "string", current: "string" }
     })
 
-    console.log(companies);
+    console.log("SELECTEDCOMPANY :", selectedCompany);
 
 
     const {
@@ -74,7 +74,7 @@ const TeaBox = ({ companies }: ICompanies) => {
                                                 onClick={(e) => {
                                                     e.preventDefault(), setCompany(company);
                                                 }}
-                                                className="flex items-center space-x-2 px-3 py-2 w-full" title={company.name} {...register("company")}>
+                                                className="flex items-center space-x-2 px-3 py-2 w-full" title={company.name}>
                                                 {company.image ? (
                                                     <img
                                                         className="h-10 w-10 rounded-full mr-2"
@@ -89,6 +89,12 @@ const TeaBox = ({ companies }: ICompanies) => {
                             </>
                         }
                     </div>
+                    <input
+                        {...register("company", { required: true })}
+                        type="hidden"
+                        // name="_id"
+                        value={selectedCompany.name}
+                    />
                     <button type="submit" className="bg-green-green text-white px-3 py-2 rounded-xl disabled:opacity-70" disabled={!input || selectedCompany._id === "0"}>spill</button>
                 </div>
             </form>

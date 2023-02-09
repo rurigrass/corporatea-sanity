@@ -1,11 +1,9 @@
 import { useState } from 'react';
-import { useForm, SubmitHandler } from 'react-hook-form';
-import { urlFor } from '../sanity';
+import { useForm, SubmitHandler, useController } from 'react-hook-form';
 import { ICompany, ICompanies } from '../typings';
-import { truncate } from "../utils/reusables";
 
 interface IFormInput {
-    company: string,
+    company: ICompany,
 }
 
 const Button = () => {
@@ -16,23 +14,30 @@ const Button = () => {
         slug: null
     })
 
-    // console.log("SELECTED COMPANY ", selectedCompany);
+    // console.log("SELECTED COMPANY ", selectedCompany.name);
 
 
     const companies = [
-        { _id: "0", image: null, name: "no name", slug: null },
+        { _id: "0", image: null, name: "nope name", slug: null },
         { _id: "1", image: null, name: "poo name", slug: null }
     ]
 
     const {
         register,
+        control,
         handleSubmit,
         formState: { errors }
     } = useForm<IFormInput>();
 
-    const onSubmit: SubmitHandler<IFormInput> = async (data) => {
-        console.log(data);
+    const { field } = useController({ name: "company", control })
 
+    const handleSelectChange = (company: ICompany) => {
+        field.onChange(company.name)
+        setCompany(company)
+    }
+
+    const onSubmit: SubmitHandler<IFormInput> = (data) => {
+        console.log(data);
     }
 
     return (
@@ -43,18 +48,17 @@ const Button = () => {
                         <input
                             type="button"
                             title={company.name}
-                            {...register("company")}
                             onClick={(e) => {
-                                e.preventDefault(), setCompany(company)
+                                e.preventDefault(),
+                                    handleSelectChange(company)
                             }}
                             className="flex items-center space-x-2 px-3 py-2 w-full hover:cursor-pointer"
-                            value={selectedCompany.name} />
-                        {company.name}
+                            value={company.name} />
                     </li>
                 )}
                 <input
                     type="submit"
-                    className="h-5 w-10 bg-green-shady"
+                    className="h-10 w-40 bg-green-shady hover:cursor-pointer"
                     value="Add to favorites"
                 />
             </form>
