@@ -5,7 +5,6 @@ import Image from "next/image";
 import cup from "../../images/cup.png";
 import { truncate } from "../../utils/reusables";
 import { useForm, SubmitHandler, useController } from 'react-hook-form';
-import { log } from "console";
 
 interface IFormInput {
     company: ICompany,
@@ -39,17 +38,16 @@ const TeaBox = ({ companies }: ICompanies) => {
     }
 
     const onSubmit: SubmitHandler<IFormInput> = async (data) => {
-        console.log(data)
-        // await fetch('/api/createSpill', {
-        //     method: 'POST',
-        //     body: JSON.stringify(data)
-        // }).then(() => {
-        //     console.log(data);
-        //     setSubmitted(true);
-        // }).catch((err) => {
-        //     console.log(err);
-        //     setSubmitted(false);
-        // })
+        await fetch('/api/createSpill', {
+            method: 'POST',
+            body: JSON.stringify(data)
+        }).then(() => {
+            console.log(data);
+            setSubmitted(true);
+        }).catch((err) => {
+            console.log(err);
+            setSubmitted(false);
+        })
     }
 
     return (

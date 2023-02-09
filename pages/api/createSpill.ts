@@ -35,9 +35,9 @@ export default async function createSpill(
       verified: false
     })
   } catch (err) {
-    return res.status(500).json({ message: `Couldn't submit content`, err })
+    return res.status(500).json({ message: `Couldn't submit spill`, err })
   }
 
-  console.log("Comment submitted");
-  // return res.status(200).json({ name: 'Spill Submitted' })
+  console.log("Spill submitted");
+  return res.status(200).json({ name: 'Spill Submitted' })
 }
