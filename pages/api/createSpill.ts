@@ -22,21 +22,21 @@ export default async function createSpill(
 
   console.log("OMG a log: ", spill, company);
 
-  // try {
-  //   await client.create({
-  //     _type: "spill",
-  //     spill: spill.spill,
-  //     author: spill.author,
-  //     blockSpill: false,
-  //     company: {
-  //       _type: "reference",
-  //       _ref: _id
-  //     },
-  //     verified: spill.verified
-  //   })
-  // } catch (err) {
-  //   return res.status(500).json({ message: `Couldn't submit content`, err })
-  // }
+  try {
+    await client.create({
+      _type: "spill",
+      spill,
+      // author: spill.author,
+      blockSpill: false,
+      company: {
+        _type: "reference",
+        _ref: company._id
+      },
+      verified: false
+    })
+  } catch (err) {
+    return res.status(500).json({ message: `Couldn't submit content`, err })
+  }
 
   console.log("Comment submitted");
   // return res.status(200).json({ name: 'Spill Submitted' })

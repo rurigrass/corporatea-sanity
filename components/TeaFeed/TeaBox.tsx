@@ -5,6 +5,7 @@ import Image from "next/image";
 import cup from "../../images/cup.png";
 import { truncate } from "../../utils/reusables";
 import { useForm, SubmitHandler, useController } from 'react-hook-form';
+import { log } from "console";
 
 interface IFormInput {
     company: ICompany,
@@ -13,6 +14,7 @@ interface IFormInput {
 
 const TeaBox = ({ companies }: ICompanies) => {
     const [input, setInput] = useState<string>("")
+    const [submitted, setSubmitted] = useState(false);
     const [dropdownOpen, setDropdownOpen] = useState(false)
     const [searchInput, setSearchInput] = useState<string>("")
     const [selectedCompany, setCompany] = useState<ICompany>({
@@ -32,13 +34,22 @@ const TeaBox = ({ companies }: ICompanies) => {
     const { field } = useController({ name: "company", control })
 
     const handleDropdownChange = (company: ICompany) => {
-        field.onChange(company.name)
+        field.onChange(company)
         setCompany(company)
     }
 
     const onSubmit: SubmitHandler<IFormInput> = async (data) => {
-        console.log(data);
-
+        console.log(data)
+        // await fetch('/api/createSpill', {
+        //     method: 'POST',
+        //     body: JSON.stringify(data)
+        // }).then(() => {
+        //     console.log(data);
+        //     setSubmitted(true);
+        // }).catch((err) => {
+        //     console.log(err);
+        //     setSubmitted(false);
+        // })
     }
 
     return (

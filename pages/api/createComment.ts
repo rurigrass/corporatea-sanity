@@ -23,7 +23,8 @@ export default async function createComment(
         _type: "reference",
         _ref: _id
       },
-      comment
+      comment,
+      approved: true
     });
   } catch (err) {
     return res.status(500).json({ message: `Couldn't submit content`, err })
