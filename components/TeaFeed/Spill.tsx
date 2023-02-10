@@ -23,7 +23,7 @@ const Spill = ({ spill }: { spill: ISpill }) => {
 
     return (
         <div className="m-2 md:mx-6">
-            <div className={`bg-white ${spillComments.length > 0 ? "rounded-t-xl" : "rounded-xl"}`}>
+            <div className={`bg-white ${showSpillCommentBox ? "rounded-t-xl" : "rounded-xl"}`}>
                 <div className="text-right pr-4 pt-2 text-gray-gray text-xs">
                     <TimeAgo date={spill._createdAt} />
                 </div>
