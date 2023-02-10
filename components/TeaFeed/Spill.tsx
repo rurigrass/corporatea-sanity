@@ -4,11 +4,13 @@ import TimeAgo from 'react-timeago';
 import { fetchSpillComments } from "../../utils/fetchSpillComments";
 import { useEffect, useState } from "react";
 import { truncate } from "../../utils/reusables";
+import SpillComments from "./SpillComments.tsx";
 
 
 
 const Spill = ({ spill }: { spill: ISpill }) => {
     const [spillComments, setSpillComments] = useState<ISpillComment[]>([])
+    const [showSpillCommentBox, setShowSpillCommentBox] = useState<boolean>(false)
 
     const refreshSpillComments = async () => {
         const spillComments: ISpillComment[] = await fetchSpillComments(spill._id);
@@ -38,7 +40,7 @@ const Spill = ({ spill }: { spill: ISpill }) => {
                         }
                     </div>
                     <div className="flex space-x-2">
-                        <div className="flex bg-blue-light p-2 space-x-1.5 rounded-lg cursor-pointer">
+                        <div className="flex bg-blue-light p-2 space-x-1.5 rounded-lg cursor-pointer" onClick={() => setShowSpillCommentBox(!showSpillCommentBox)} >
                             <div>{spillComments.length}</div>
                             <div>💬</div>
                         </div>
@@ -49,7 +51,10 @@ const Spill = ({ spill }: { spill: ISpill }) => {
                     </div>
                 </div>
             </div>
-            <div className="bg-gray-light rounded-b-xl">
+            {showSpillCommentBox &&
+                <SpillComments spillComments={spillComments} />
+            }
+            {/* <div className="bg-gray-light rounded-b-xl">
                 {spillComments.map(spillComment =>
                     <div key={spillComment._id} className="even:bg-white grid grid-cols-teabox p-2 pl-3.5">
                         <div className="bg-gray-grayer h-10 w-10 rounded-full" />
@@ -61,7 +66,7 @@ const Spill = ({ spill }: { spill: ISpill }) => {
                         </div>
                     </div>
                 )}
-            </div>
+            </div> */}
         </div>
     )
 }
