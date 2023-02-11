@@ -5,7 +5,6 @@ import TimeAgo from 'react-timeago';
 const SpillComments = ({ spillComments }: { spillComments: ISpillComment[] }) => {
     return (
         <div>
-            {/* <div className={`bg-white h-14 pl-3.5 ${spillComments.length <= 0 && "rounded-b-xl"}`}>this is the spill comments box</div> */}
             <div className={`flex items-center top-0 sticky bg-white h-14 pl-3.5 ${spillComments.length <= 0 && "rounded-b-xl"}`} >
                 <input type="text"
                     placeholder="Got some more spice?"
