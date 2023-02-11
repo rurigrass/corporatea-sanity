@@ -5,7 +5,17 @@ import TimeAgo from 'react-timeago';
 const SpillComments = ({ spillComments }: { spillComments: ISpillComment[] }) => {
     return (
         <div>
-            <div className={`bg-white h-14 pl-3.5 ${spillComments.length <= 0 && "rounded-b-xl"}`}>this is the spill comments box</div>
+            {/* <div className={`bg-white h-14 pl-3.5 ${spillComments.length <= 0 && "rounded-b-xl"}`}>this is the spill comments box</div> */}
+            <div className={`flex items-center top-0 sticky bg-white h-14 pl-3.5 ${spillComments.length <= 0 && "rounded-b-xl"}`} >
+                <input type="text"
+                    placeholder="Got some more spice?"
+                    className="px-3 py-2 outline-none w-full text-gray-gray border-b-2 border-b-blue-normal"
+                // value={searchInput}
+                // onChange={(e) => {
+                //     setSearchInput(e.target.value.toLowerCase())
+                // }}
+                />
+            </div>
             <div className="bg-gray-light rounded-b-xl">
                 {spillComments.map(spillComment =>
                     <div key={spillComment._id} className="even:bg-white grid grid-cols-teabox p-2 pl-3.5">
