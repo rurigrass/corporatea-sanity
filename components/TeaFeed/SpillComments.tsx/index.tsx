@@ -9,10 +9,6 @@ const SpillComments = ({ spillComments }: { spillComments: ISpillComment[] }) =>
                 <input type="text"
                     placeholder="Got some more spice?"
                     className="px-3 py-2 outline-none w-full text-gray-gray border-b-2 border-b-blue-normal"
-                // value={searchInput}
-                // onChange={(e) => {
-                //     setSearchInput(e.target.value.toLowerCase())
-                // }}
                 />
             </div>
             <div className="bg-gray-light rounded-b-xl">
