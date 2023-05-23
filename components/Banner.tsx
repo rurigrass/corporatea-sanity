@@ -9,7 +9,7 @@ const Banner = () => {
                     <h1 className=" text-white text-6xl max-w-xl font-montserrat font-bold">Spill the tea</h1>
                 </div>
                 <div className="lg:w-1/3 w-1/2 flex justify-center">
-                    <Image src={cup} alt="cup" priority={true} />
+                    <Image src={cup} alt="cupOfTea" priority={true} />
                 </div>
                 <div className="hidden lg:w-1/3 lg:flex lg:justify-center">
                     <h2 className="  text-white text-4xl font-montserrat font-semibold">on your <span className="underline decoration-white decoration-3 hover: cursor-pointer hover:text-green-green hover:decoration-green">company</span></h2>
